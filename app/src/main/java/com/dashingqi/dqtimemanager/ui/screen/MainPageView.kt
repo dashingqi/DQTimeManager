@@ -31,9 +31,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.dashingqi.dqtimemanager.config.MainPageRoute
-import com.dashingqi.dqtimemanager.ui.screen.main.MainCountDownPageView
-import com.dashingqi.dqtimemanager.ui.screen.main.MainStopWatchPageView
-import com.dashingqi.dqtimemanager.ui.screen.main.MainTimePageView
+import com.dashingqi.dqtimemanager.ui.screen.countdown.MainCountDownPageView
+import com.dashingqi.dqtimemanager.ui.screen.stopwatch.MainStopWatchPageView
+import com.dashingqi.dqtimemanager.ui.screen.home.HomePageView
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -103,7 +103,7 @@ fun MainPageView() {
 private fun MainPageNavManager(navHostController: NavHostController) {
     NavHost(navController = navHostController, startDestination = MainPageRoute.MAIN_TIME_SCREEN) {
         composable(MainPageRoute.MAIN_TIME_SCREEN) {
-            MainTimePageView()
+            HomePageView()
         }
         composable(MainPageRoute.MAIN_COUNT_DOWN_SCREEN) {
             MainCountDownPageView()
