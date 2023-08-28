@@ -50,7 +50,7 @@ import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun SplashView(navigationController: NavController? = null) {
+fun SplashPageView(navigationController: NavController? = null) {
     var textManagerAnimationVisible by remember {
         mutableStateOf(false)
     }
@@ -71,7 +71,7 @@ fun SplashView(navigationController: NavController? = null) {
     }
 
     val canvasRotationValue by animateFloatAsState(
-        targetValue = if (lineAlpha == 1f) 360f else 0f, animationSpec = tween(durationMillis = 1000)
+        targetValue = if (lineAlpha == 1f) 360f else 0f, animationSpec = tween(durationMillis = 1000), label = ""
     )
 
     LaunchedEffect(key1 = Unit) {
@@ -141,6 +141,6 @@ fun SplashView(navigationController: NavController? = null) {
 @Composable
 fun SplashViewPreview() {
     DQTimeManagerTheme {
-        SplashView()
+        SplashPageView()
     }
 }

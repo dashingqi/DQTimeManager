@@ -8,8 +8,19 @@ package com.dashingqi.dqtimemanager.config
 object AppRoute {
 
     /** 启动页面路由*/
-    const val SPLASH_LAUNCH_SCREEN = "splashLaunch"
+    internal const val SPLASH_LAUNCH_SCREEN = "splashLaunch"
 
     /** 主页面*/
-    const val MAIN_SCREEN = "main"
+    internal const val MAIN_SCREEN = "main"
+}
+
+object MainPageRoute {
+    /** 时间*/
+    internal const val MAIN_TIME_SCREEN = "mainTimeScreen"
+
+    /** 倒计时*/
+    internal const val MAIN_COUNT_DOWN_SCREEN = "mainCountDownScreen"
+
+    /** 秒表*/
+    internal const val MAIN_STOP_WATCH_SCREEN = "mainStopWatchScreen"
 }
