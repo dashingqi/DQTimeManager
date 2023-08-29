@@ -17,10 +17,13 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 /**
  * 主页面-时间页面
@@ -29,6 +32,10 @@ import androidx.compose.ui.unit.dp
  */
 @Composable
 fun HomePageView() {
+
+    val homeViewModel: HomeViewModel = viewModel()
+    val timeState by homeViewModel.timeState.collectAsState()
+
     Box(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
         Column(
             modifier = Modifier
@@ -67,11 +74,11 @@ fun HomePageView() {
                 Column {
                     Text(text = "2023/08/28(四)", modifier = Modifier.padding(bottom = 15.dp, start = 5.dp))
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        TimeCard()
-                        TimeCard()
+                        TimeCard(timeState.hour)
                         Text(text = ":")
-                        TimeCard()
-                        TimeCard()
+                        TimeCard(timeState.minute)
+                        Text(text = ":")
+                        TimeCard(timeState.second)
                     }
                 }
             }
@@ -81,14 +88,14 @@ fun HomePageView() {
 }
 
 @Composable
-fun TimeCard() {
+fun TimeCard(value: Int) {
     Box {
         Card(
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.primaryContainer
             ), modifier = Modifier.padding(horizontal = 5.dp)
         ) {
-            Text(text = "12", modifier = Modifier.padding(vertical = 10.dp, horizontal = 12.dp))
+            Text(text = "$value", modifier = Modifier.padding(vertical = 10.dp, horizontal = 12.dp))
 
         }
     }
